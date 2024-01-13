@@ -1,0 +1,38 @@
+﻿<Window x:Class="PracticaRadioButton.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PracticaRadioButton"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="Aqua" Text="Hola Semáforo" Margin="15" FontSize="24" FontWeight="Heavy"  Foreground="Violet"
+                   TextAlignment="Center" Padding="15"></TextBlock>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="25">
+
+            <RadioButton Margin="35" Checked="Rojo" >Rojo</RadioButton>
+            <RadioButton Margin="35" Checked="Amarillo">Naranja</RadioButton>
+            <RadioButton Margin="35" Checked="Verde">Verde</RadioButton>
+
+        </StackPanel>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+
+            <Image Grid.Row="1" Grid.Column="1" Source=" C:\Users\Juan Gines\Desktop\Programas Visual\descarga.png"></Image>
+            <Ellipse Name="eRojo" Fill="Red" Margin="174,69,174,198" RenderTransformOrigin="0.512,0.528" Visibility="Hidden"/>
+            <Ellipse Name="eAmarillo" Fill="Yellow" Margin="174,128,174,142" RenderTransformOrigin="0.512,0.528" Visibility="Hidden"/>
+            <Ellipse Name="eVerde" Fill="Green" Margin="174,184,174,85" RenderTransformOrigin="0.512,0.528" Visibility="Hidden"/>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GestionTallerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cargo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Moldes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClienteMolde" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaEntrada" Type="datetime" />
+          <Property Name="FechaSalida" Type="datetime" />
+          <Property Name="EnTaller" Type="bit" />
+        </EntityType>
+        <EntityType Name="Operacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoOperacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Horas" Type="int" />
+          <Property Name="NumeroOT" Type="int" Nullable="false" />
+          <Property Name="NuEmpleado" Type="int" />
+          <Property Name="EstadoOp" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OT">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Numero" Type="int" Nullable="false" />
+          <Property Name="IdMolde" Type="int" Nullable="false" />
+          <Property Name="HorasTrabajo" Type="int" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClienteOT" Type="nvarchar" MaxLength="50" />
+          <Property Name="Acabada" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="EmpleadoFK">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Operacion" Type="Self.Operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Operacion">
+              <PropertyRef Name="NuEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Moldes">
+          <End Role="Moldes" Type="Self.Moldes" Multiplicity="1" />
+          <End Role="OT" Type="Self.OT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Moldes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OT">
+              <PropertyRef Name="IdMolde" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OTFK">
+          <End Role="OT" Type="Self.OT" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Operacion" Type="Self.Operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OT">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Operacion">
+              <PropertyRef Name="NumeroOT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GestionTallerModelStoreContainer">
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Moldes" EntityType="Self.Moldes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Operacion" EntityType="Self.Operacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OT" EntityType="Self.OT" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="EmpleadoFK" Association="Self.EmpleadoFK">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Operacion" EntitySet="Operacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Moldes" Association="Self.FK_Moldes">
+            <End Role="Moldes" EntitySet="Moldes" />
+            <End Role="OT" EntitySet="OT" />
+          </AssociationSet>
+          <AssociationSet Name="OTFK" Association="Self.OTFK">
+            <End Role="OT" EntitySet="OT" />
+            <End Role="Operacion" EntitySet="Operacion" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GestionTallerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cargo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Operacion" Relationship="Self.EmpleadoFK" FromRole="Empleado" ToRole="Operacion" />
+        </EntityType>
+        <EntityType Name="Moldes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClienteMolde" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaEntrada" Type="DateTime" Precision="3" />
+          <Property Name="FechaSalida" Type="DateTime" Precision="3" />
+          <Property Name="EnTaller" Type="Boolean" />
+          <NavigationProperty Name="OT" Relationship="Self.FK_Moldes" FromRole="Moldes" ToRole="OT" />
+        </EntityType>
+        <EntityType Name="Operacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoOperacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Horas" Type="Int32" />
+          <Property Name="NumeroOT" Type="Int32" Nullable="false" />
+          <Property Name="NuEmpleado" Type="Int32" />
+          <Property Name="EstadoOp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Empleado" Relationship="Self.EmpleadoFK" FromRole="Operacion" ToRole="Empleado" />
+          <NavigationProperty Name="OT" Relationship="Self.OTFK" FromRole="Operacion" ToRole="OT" />
+        </EntityType>
+        <EntityType Name="OT">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Numero" Type="Int32" Nullable="false" />
+          <Property Name="IdMolde" Type="Int32" Nullable="false" />
+          <Property Name="HorasTrabajo" Type="Int32" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClienteOT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Acabada" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Moldes" Relationship="Self.FK_Moldes" FromRole="OT" ToRole="Moldes" />
+          <NavigationProperty Name="Operacion" Relationship="Self.OTFK" FromRole="OT" ToRole="Operacion" />
+        </EntityType>
+        <Association Name="EmpleadoFK">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Operacion" Type="Self.Operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Operacion">
+              <PropertyRef Name="NuEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Moldes">
+          <End Role="Moldes" Type="Self.Moldes" Multiplicity="1" />
+          <End Role="OT" Type="Self.OT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Moldes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OT">
+              <PropertyRef Name="IdMolde" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OTFK">
+          <End Role="OT" Type="Self.OT" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Operacion" Type="Self.Operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OT">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Operacion">
+              <PropertyRef Name="NumeroOT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GestionTallerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" />
+          <EntitySet Name="Moldes" EntityType="Self.Moldes" />
+          <EntitySet Name="Operacion" EntityType="Self.Operacion" />
+          <EntitySet Name="OT" EntityType="Self.OT" />
+          <AssociationSet Name="EmpleadoFK" Association="Self.EmpleadoFK">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Operacion" EntitySet="Operacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Moldes" Association="Self.FK_Moldes">
+            <End Role="Moldes" EntitySet="Moldes" />
+            <End Role="OT" EntitySet="OT" />
+          </AssociationSet>
+          <AssociationSet Name="OTFK" Association="Self.OTFK">
+            <End Role="OT" EntitySet="OT" />
+            <End Role="Operacion" EntitySet="Operacion" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GestionTallerModelStoreContainer" CdmEntityContainer="GestionTallerEntities">
+          <EntitySetMapping Name="Empleado">
+            <EntityTypeMapping TypeName="GestionTallerModel.Empleado">
+              <MappingFragment StoreEntitySet="Empleado">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Moldes">
+            <EntityTypeMapping TypeName="GestionTallerModel.Moldes">
+              <MappingFragment StoreEntitySet="Moldes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="ClienteMolde" ColumnName="ClienteMolde" />
+                <ScalarProperty Name="FechaEntrada" ColumnName="FechaEntrada" />
+                <ScalarProperty Name="FechaSalida" ColumnName="FechaSalida" />
+                <ScalarProperty Name="EnTaller" ColumnName="EnTaller" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Operacion">
+            <EntityTypeMapping TypeName="GestionTallerModel.Operacion">
+              <MappingFragment StoreEntitySet="Operacion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TipoOperacion" ColumnName="TipoOperacion" />
+                <ScalarProperty Name="Horas" ColumnName="Horas" />
+                <ScalarProperty Name="NumeroOT" ColumnName="NumeroOT" />
+                <ScalarProperty Name="NuEmpleado" ColumnName="NuEmpleado" />
+                <ScalarProperty Name="EstadoOp" ColumnName="EstadoOp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OT">
+            <EntityTypeMapping TypeName="GestionTallerModel.OT">
+              <MappingFragment StoreEntitySet="OT">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="IdMolde" ColumnName="IdMolde" />
+                <ScalarProperty Name="HorasTrabajo" ColumnName="HorasTrabajo" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="ClienteOT" ColumnName="ClienteOT" />
+                <ScalarProperty Name="Acabada" ColumnName="Acabada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

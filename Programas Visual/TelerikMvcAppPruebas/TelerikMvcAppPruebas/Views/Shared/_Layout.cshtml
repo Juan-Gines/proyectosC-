@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html> 
+    <head>
+        <title>@ViewBag.Title - TAM Panel de Control</title>
+        <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" type="text/css" />
+
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+
+    	<link href="@Url.Content("~/Content/kendo/2018.2.516/kendo.common-bootstrap.min.css")" rel="stylesheet" type="text/css" />
+	    <link href="@Url.Content("~/Content/kendo/2018.2.516/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+	    <link href="@Url.Content("~/Content/kendo/2018.2.516/kendo.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+	    <script src="@Url.Content("~/Scripts/kendo/2018.2.516/jquery.min.js")"></script>
+	    <script src="@Url.Content("~/Scripts/kendo/2018.2.516/jszip.min.js")"></script>
+	    <script src="@Url.Content("~/Scripts/kendo/2018.2.516/kendo.all.min.js")"></script>
+	    <script src="@Url.Content("~/Scripts/kendo/2018.2.516/kendo.aspnetmvc.min.js")"></script>
+	    <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+    </head>
+    <body>
+        @RenderBody()
+    </body>
+</html>

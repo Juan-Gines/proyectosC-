@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "Mi Página";
+}
+
+<div class="signup_container">
+    <table>
+        <tr>
+            <td>
+                @Html.Partial("_Izquierda")
+            </td>
+            <td>
+                @Html.Partial("_Derecha")
+            </td>
+        </tr>
+    </table>
+</div>
+@*@model MiModelo*@
+@*@model PrimerMVC.Models.Persona
+
+    @{
+        ViewBag.Title = "Home Page";
+        var lstValores = new List<SelectListItem>();
+        for (int i = 0; i < 100; i++)
+        {
+            lstValores.Add(new SelectListItem() { Value = i.ToString(), Text = i.ToString() });
+        }
+
+    }
+
+    <div class="jumbotron">
+        <h1>Datos de ejemplo</h1>
+        <br />
+        <br />
+        @using (Html.BeginForm("index", "Home", FormMethod.Post))
+        {
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <br />
+            @Html.LabelFor(m => m.Nombre)
+            @Html.TextBoxFor(m => m.Nombre)
+            <br />
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <br />
+            @Html.LabelFor(m => m.Apellidos)
+            @Html.TextBoxFor(m => m.Apellidos)
+            <br />
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <br />
+            @Html.Label("Hombre")
+            @Html.RadioButtonFor(m => m.Sexo, "Hombre", new { value = "Hombre" })
+            @Html.Label("Mujer")
+            @Html.RadioButtonFor(m => m.Sexo, "Mujer", new { value = "Mujer" })
+            <br />
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <br />
+            @Html.LabelFor(m => m.Edad)
+            @Html.DropDownListFor(m => m.Edad, lstValores)
+            <br />
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <br />
+            @Html.LabelFor(m => m.Vive)
+            @Html.CheckBoxFor(m => m.Vive)
+            <br />
+            <input type="submit" value="Submit" />
+        }
+    </div>*@
+
+
+
+@*<div class="jumbotron">
+        <h1>Ejemplo de modelo</h1>
+        <p>@Html.LabelFor(m => m.Nombre) : @Model.Nombre </p>
+        <p>@Html.LabelFor(m => m.Apellidos) : @Model.Apellidos</p>
+        <p>@Html.LabelFor(m => m.Edad) : @Model.Edad</p>
+    </div>*@
+
+@*<div class="row">
+        <div class="col-md-4">
+            <h2>Getting started</h2>
+            <p>
+                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                enables a clean separation of concerns and gives you full control over markup
+                for enjoyable, agile development.
+            </p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Get more libraries</h2>
+            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Web Hosting</h2>
+            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        </div>
+    </div>*@

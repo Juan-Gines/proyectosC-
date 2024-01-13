@@ -1,0 +1,56 @@
+﻿<Window x:Class="ComboBox_CheckBox.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ComboBox_CheckBox"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+
+            <ComboBox Name="ListaCap">
+                
+                <ComboBox.ItemTemplate>
+                    
+                    <DataTemplate>
+
+                        <StackPanel>
+
+                            <TextBlock Text="{Binding Nombre}"></TextBlock>
+                            
+                        </StackPanel>
+                        
+                    </DataTemplate>                    
+                    
+                </ComboBox.ItemTemplate>
+                    
+            </ComboBox>
+            
+        </StackPanel>
+        <StackPanel Grid.Column="1" Margin="100">
+
+            <Label  FontSize="16" FontWeight="Heavy">Paises</Label>
+
+            <CheckBox Name="ActivarTodos" IsThreeState="True" Checked="ActivarTodos_Checked" Unchecked="ActivarTodos_Unchecked">Activar todos</CheckBox>
+            
+            <StackPanel Margin="15">
+
+                <CheckBox Name="Barcelona" Checked="Individual_Cheked" Unchecked="Individual_NoCheked">Barcelona</CheckBox>
+                <CheckBox Name="Madrid" Checked="Individual_Cheked" Unchecked="Individual_NoCheked">Madrid</CheckBox>
+                <CheckBox Name="Paris" Checked="Individual_Cheked" Unchecked="Individual_NoCheked">Paris</CheckBox>
+                <CheckBox Name="Londres" Checked="Individual_Cheked" Unchecked="Individual_NoCheked">Londres</CheckBox>
+                <CheckBox Name="Washington" Checked="Individual_Cheked" Unchecked="Individual_NoCheked">Washington</CheckBox>
+                
+            </StackPanel> 
+            
+        </StackPanel>
+        
+
+    </Grid>
+</Window>

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="GestionTaller" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=PEPINO\BDJGAR;Initial Catalog=GestionTaller;Integrated Security=True;Pooling=False" SettingsObjectName="GestionTaller.Properties.Settings" SettingsPropertyName="ConexionGestionTaller" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Moldes" Member="Moldes">
+    <Type Name="Moldes">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Cliente" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FechaEntrada" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FechaSalida" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Moldes_OT" Member="OT" ThisKey="Id" OtherKey="IdMolde" Type="OT" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Empleado" Member="Empleado">
+    <Type Name="Empleado">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Cargo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Empleado_Operacion" Member="Operacion" ThisKey="Id" OtherKey="nEmpleado" Type="Operacion" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Operacion" Member="Operacion">
+    <Type Name="Operacion">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Horas" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="NumeroOT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nEmpleado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Empleado_Operacion" Member="Empleado" ThisKey="nEmpleado" OtherKey="Id" Type="Empleado" IsForeignKey="true" />
+      <Association Name="OT_Operacion" Member="OT" ThisKey="NumeroOT" OtherKey="Id" Type="OT" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OT" Member="OT">
+    <Type Name="OT">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Número" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdMolde" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="HorasTrabajo" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="Tipo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Cliente" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="OT_Operacion" Member="Operacion" ThisKey="Id" OtherKey="NumeroOT" Type="Operacion" />
+      <Association Name="Moldes_OT" Member="Moldes" ThisKey="IdMolde" OtherKey="Id" Type="Moldes" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

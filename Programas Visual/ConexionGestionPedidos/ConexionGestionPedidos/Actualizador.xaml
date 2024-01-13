@@ -1,0 +1,46 @@
+﻿<Window x:Class="ConexionGestionPedidos.Actualizador"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ConexionGestionPedidos"
+        mc:Ignorable="d"
+        Title="Actualizador" Height="410.143" Width="350">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>            
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="170"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Datos del cliente" HorizontalContentAlignment="Center" FontSize="22" FontWeight="Bold" Margin="20" Padding="13"></Label>
+        
+        <StackPanel Grid.Column="0" Grid.Row="1" Margin="5,10,5,10">
+
+            <Label Content="Nombre:" Margin="2" FontSize="16"></Label>
+            <Label Content="Dirección:" Margin="2" FontSize="16"></Label>
+            <Label Content="Población:" Margin="2" FontSize="16"></Label>
+            <Label Content="Teléfono:" Margin="2" FontSize="16"></Label>
+            
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="5,10,5,10">
+
+            <TextBox Margin="0,7" FontSize="16" Text="" Name="nCliente"></TextBox>
+            <TextBox Margin="0,6" FontSize="16" Text="" Name="dCliente"></TextBox>
+            <TextBox Margin="0,6" FontSize="16" Text="" Name="pCliente"></TextBox>
+            <TextBox Margin="0,6" FontSize="16" Text="" Name="tCliente"></TextBox>
+            
+        </StackPanel>
+        
+        <Button Grid.Column="1" Grid.Row="2" Margin="0,0,100,70" Content="Actualizar cliente" FontSize="16" FontWeight="Medium" Click="Button_Click" ></Button>
+        
+        
+    </Grid>
+
+</Window>

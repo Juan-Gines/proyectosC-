@@ -1,0 +1,18 @@
+﻿
+@(Html.Kendo().Grid<KendoQsBoilerplate.Invoice>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+        columns.Bound(c => c.CustomerName);
+        columns.Bound(c => c.OrderDate);
+        columns.Bound(c => c.ProductName);
+        columns.Bound(c => c.UnitPrice);
+        columns.Bound(c => c.Quantity);
+        columns.Bound(c => c.Salesperson);
+      })
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Read(read => read.Action("Invoices_Read", "Invoice"))
+      )
+)

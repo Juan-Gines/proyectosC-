@@ -1,0 +1,1189 @@
+﻿<Window x:Class="PruebaDefinitiva.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        xmlns:local="clr-namespace:PruebaDefinitiva"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" WindowStyle="None">
+    <Window.Resources>
+
+         <!--#region ESTILOS DE LOS BOTONES PRINCIPALES DE LAS LISTAS-->
+        
+        <Style x:Key="BotonIzq" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#FF043065"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Foreground" Value="#FFE5CFF1"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <StackPanel Orientation="Horizontal" >
+                            <DockPanel Width="7" Name="borde"></DockPanel>
+                            <fa:IconImage Name="icon" Icon="ClipboardList" Height="40" Width="50" Foreground="#FFE5CFF1"></fa:IconImage>
+                            <TextBlock Name="texto" Text="OT" Padding="15" FontSize="20" Width="163" Foreground="#FFE5CFF1"></TextBlock>
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger >
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True"></Condition>
+                                    <Condition Property="IsDefault" Value="False"></Condition>
+                                </MultiTrigger.Conditions>
+                                <MultiTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:1" Storyboard.TargetProperty="Opacity" From="0.1" To="1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiTrigger.EnterActions>
+                            </MultiTrigger>
+
+                            <Trigger Property="IsDefault" Value="true">
+                                <Setter Property="Background" TargetName="borde" Value="Gold"></Setter>
+                                <Setter Property="Foreground" TargetName="icon" Value="Gold"></Setter>
+                                <Setter Property="Foreground" TargetName="texto" Value="Gold"></Setter>
+                            </Trigger>
+
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="borde" Value="#FF50B84B"></Setter>
+                                <Setter Property="Foreground" TargetName="icon" Value="#FF50B84B"></Setter>
+                                <Setter Property="Foreground" TargetName="texto" Value="#FF50B84B"></Setter>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="borde" Value="Gold"></Setter>
+                                <Setter Property="Foreground" TargetName="icon" Value="Gold"></Setter>
+                                <Setter Property="Foreground" TargetName="texto" Value="Gold"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="BotonIzq1" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#FF043065"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Foreground" Value="#FFE5CFF1"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <StackPanel Orientation="Horizontal">
+                            <DockPanel Width="7" Name="borde"></DockPanel>
+                            <fa:IconImage Name="icon" Icon="Users" Height="40" Width="50" Foreground="#FFE5CFF1"></fa:IconImage>
+                            <TextBlock Name="texto" Text="Empleados" Padding="15" FontSize="20" Width="163" Foreground="#FFE5CFF1"></TextBlock>
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger x:Name="Hola">
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True"></Condition>
+                                    <Condition Property="IsDefault" Value="False"></Condition>
+                                </MultiTrigger.Conditions>
+                                <MultiTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:1" Storyboard.TargetProperty="Opacity" From="0.1" To="1"
+                                                              />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiTrigger.EnterActions>
+
+                            </MultiTrigger>
+                            <Trigger Property="IsDefault" Value="true">
+                                <Setter Property="Background" TargetName="borde" Value="Gold"></Setter>
+                                <Setter Property="Foreground" TargetName="icon" Value="Gold"></Setter>
+                                <Setter Property="Foreground" TargetName="texto" Value="Gold"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="borde" Value="#FF50B84B"></Setter>
+                                <Setter Property="Foreground" TargetName="icon" Value="#FF50B84B"></Setter>
+                                <Setter Property="Foreground" TargetName="texto" Value="#FF50B84B"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="borde" Value="Gold"></Setter>
+                                <Setter Property="Foreground" TargetName="icon" Value="Gold"></Setter>
+                                <Setter Property="Foreground" TargetName="texto" Value="Gold"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="BotonIzq2" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#FF043065"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Foreground" Value="#FFE5CFF1"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <StackPanel Orientation="Horizontal">
+                            <DockPanel Width="7" Name="borde"></DockPanel>
+                            <fa:IconImage Name="icon" Icon="DiceD6" Height="40" Width="50" Foreground="#FFE5CFF1"></fa:IconImage>
+                            <TextBlock Name="texto" Text="Moldes" Padding="15" FontSize="20" Width="163" Foreground="#FFE5CFF1"></TextBlock>
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger x:Name="Hola">
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True"></Condition>
+                                    <Condition Property="IsDefault" Value="False"></Condition>
+                                </MultiTrigger.Conditions>
+                                <MultiTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:1" Storyboard.TargetProperty="Opacity" From="0.1" To="1"
+                                                              />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiTrigger.EnterActions>
+
+                            </MultiTrigger>
+                            <Trigger Property="IsDefault" Value="true">
+                                <Setter Property="Background" TargetName="borde" Value="Gold"></Setter>
+                                <Setter Property="Foreground" TargetName="icon" Value="Gold"></Setter>
+                                <Setter Property="Foreground" TargetName="texto" Value="Gold"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="borde" Value="#FF50B84B"></Setter>
+                                <Setter Property="Foreground" TargetName="icon" Value="#FF50B84B"></Setter>
+                                <Setter Property="Foreground" TargetName="texto" Value="#FF50B84B"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="borde" Value="Gold"></Setter>
+                                <Setter Property="Foreground" TargetName="icon" Value="Gold"></Setter>
+                                <Setter Property="Foreground" TargetName="texto" Value="Gold"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="BotonIzq3" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#FF043065"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Foreground" Value="#FFE5CFF1"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <StackPanel Orientation="Horizontal">
+                            <DockPanel Width="7" Name="borde"></DockPanel>
+                            <fa:IconImage Name="icon" Icon="ClipboardCheck" Height="40" Width="50" Foreground="#FFE5CFF1"></fa:IconImage>
+                            <TextBlock Name="texto" Text="OT finalizadas" Padding="15" FontSize="20" Width="163" Foreground="#FFE5CFF1"></TextBlock>
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger x:Name="Hola">
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True"></Condition>
+                                    <Condition Property="IsDefault" Value="False"></Condition>
+                                </MultiTrigger.Conditions>
+                                <MultiTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:1" Storyboard.TargetProperty="Opacity" From="0.1" To="1"
+                                                              />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiTrigger.EnterActions>
+
+                            </MultiTrigger>
+                            <Trigger Property="IsDefault" Value="true">
+                                <Setter Property="Background" TargetName="borde" Value="Gold"></Setter>
+                                <Setter Property="Foreground" TargetName="icon" Value="Gold"></Setter>
+                                <Setter Property="Foreground" TargetName="texto" Value="Gold"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="borde" Value="#FF50B84B"></Setter>
+                                <Setter Property="Foreground" TargetName="icon" Value="#FF50B84B"></Setter>
+                                <Setter Property="Foreground" TargetName="texto" Value="#FF50B84B"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="borde" Value="Gold"></Setter>
+                                <Setter Property="Foreground" TargetName="icon" Value="Gold"></Setter>
+                                <Setter Property="Foreground" TargetName="texto" Value="Gold"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <!--# ESTILO DE LA CABEZERA DEL DATAGRID-->
+        
+        <Style TargetType="DataGridColumnHeader" >
+            <Setter Property="Foreground" Value="#FFC6D15B"></Setter>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="1"/>
+                        <GradientStop Color="#FF27A29D" Offset="0.548"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Padding" Value="5"></Setter>
+            <Setter Property="FontSize" Value="14"></Setter>
+        </Style>
+        
+        <!--# ESTILO DE LOS BOTONES CON ICONO Y TEXTO-->
+        
+        <Style x:Key="BtnDerecha" TargetType="Button">
+            <Setter Property="Background" Value="#FFB4B413"></Setter>
+            <Setter Property="BorderBrush" Value="#FF1D0D85"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="#FF5D0454"></Setter>
+                    <Setter Property="BorderThickness" Value="2"></Setter>
+                </Trigger>
+                <MultiTrigger x:Name="Hola">
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsMouseOver" Value="True"></Condition>
+                        <Condition Property="IsDefault" Value="False"></Condition>
+                    </MultiTrigger.Conditions>
+                    <MultiTrigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetProperty="Opacity" From="0.1" To="1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </MultiTrigger.EnterActions>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="BtnDerIcon" TargetType="fa:IconBlock">
+            <Setter Property="Foreground" Value="Red"></Setter>
+        </Style>
+        <Style x:Key="BtnDerTexto" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Black"></Setter>
+            <Setter Property="Padding" Value="2"></Setter>
+        </Style>
+        
+        <!--#  ESTILO DE LOS LABEL DE TITULO CON ICONO Y TEXTO-->
+        
+        <Style x:Key="LabelInfo" TargetType="Label">
+            <Setter Property="Foreground" Value="Black"></Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
+            <Setter Property="FontWeight" Value="Medium"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            <Setter Property="Height" Value="35"></Setter>
+            <Setter Property="BorderBrush" Value="#FF030532"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="Margin" Value="1"></Setter>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#FFE0E066" Offset="0.0" />
+                        <GradientStop Color="#FFAAAA59" Offset="0.25" />
+                        <GradientStop Color="#FFCDA4C9" Offset="0.5" />
+                        <GradientStop Color="#FF75B684" Offset="0.75" />
+                        <GradientStop Color="#FF48830E" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+    
+    <!--# DISEÑO PANTALLA PRINCIPAL-->
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid   Background="#FF043065">
+            <Image Source="LOGO-TecstmoldAzul.jpg" HorizontalAlignment="Left" Stretch="Fill" PreviewMouseLeftButtonDown="HomeClick" ></Image>
+        </Grid>
+        <Grid Background="#FF043065" Grid.Column="0" Grid.Row="1">
+            <StackPanel>
+                <Button Name="BtnOt" Style="{DynamicResource BotonIzq}" Click="BtnOt_Click" ></Button>
+                <Button Name="BtnEmpleados" Style="{DynamicResource BotonIzq1}" Click="BtnEmpleados_Click" ></Button>                
+                <Button Name="BtnMoldes" Style="{DynamicResource BotonIzq2}" Click="BtnMoldes_Click" ></Button>
+                <Button Name="BtnOtAcabada" Style="{DynamicResource BotonIzq3}" Click="BtnOtAcabada_Click" ></Button>
+            </StackPanel>           
+        </Grid>
+        <Grid Grid.Column="1" Grid.RowSpan="2" Background="#FF053978">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" ></RowDefinition>
+                <RowDefinition Height="5" ></RowDefinition>
+                <RowDefinition Height="*" ></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <!-- TITULO PRINCIPAL-->
+            
+            <Grid  Name="barraTitulo" Background="Transparent" MouseRightButtonDown="barraTitulo_MouseRightButtonDown" MouseLeftButtonDown="barraTitulo_MouseLeftButtonDown" Margin="-52,5,52,0" Grid.RowSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Name="LeftPaddingColumn" Width="0"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition x:Name="RightPaddingColumn" Width="0"/>
+                </Grid.ColumnDefinitions>
+                <fa:IconImage Name="iconTitulo" Icon="Home"
+                            Grid.Column="1" HorizontalAlignment="Left"
+                            Width="30" Height="30" Margin="91,15,0,15" Foreground="#FF72248F"/>
+                <TextBlock Name="titulo" Text="Home" FontWeight="Black"
+                             Grid.Column="1" FontSize="20"                
+                             Foreground="#FF72248F" Margin="128,16,462,17"/>
+                
+                <!--BOTONES DE LA BARRA DE TITULO -->
+                
+                <Button VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="1" Click="BtnCerrar_Click"  Margin="0,4,4,0" Background="#FF043065" BorderBrush="{x:Null}">
+                    <Button.Content>
+                        <fa:IconImage Icon="WindowClose" Width="20" Height="20" Foreground="#FF72248F"></fa:IconImage>
+                    </Button.Content>
+                </Button>
+                <Button VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="1" Margin="0,4,29,0" BorderBrush="{x:Null}" Click="BtnMaximizar_Click" Background="#FF043065">
+                    <Button.Content>
+                        <fa:IconImage Icon="WindowMaximize" Width="20" Height="20" Foreground="#FF72248F"></fa:IconImage>
+                    </Button.Content>
+                </Button>
+                <Button VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="1" Margin="0,4,54,0" BorderBrush="{x:Null}" Background="#FF043065" Click="BtnMinimizar_Click">
+                    <Button.Content>
+                        <fa:IconImage Icon="WindowMinimize" Width="20" Height="20" Foreground="#FF72248F"></fa:IconImage>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            
+            <!--# PANELES DE INFORMACION-->
+            
+                    <!--DISEÑO PANEL INFORMACION-->
+            
+            <DockPanel Grid.Row="1" LastChildFill="True" Background="#FF0E45A6"></DockPanel>
+            <Grid Grid.Row="2" Name="Panel" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="20"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF209EAA" Offset="0.016"/>
+                        <GradientStop Color="#FF032327" Offset="0.997"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <DataGrid Visibility="Collapsed" ToolTip="DobleClick para obtener la información" Name="panelDataGrid" IsReadOnly="True"
+                          MouseDoubleClick="btnEditar_Click" SelectionMode="Single" >
+                    <DataGrid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF209EAA" Offset="0.016"/>
+                            <GradientStop Color="#FF032327" Offset="0.997"/>
+                        </LinearGradientBrush>
+                    </DataGrid.Background>
+                </DataGrid>
+                <Grid Grid.Row="0" Grid.Column="1" >
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF209EAA" Offset="0.016"/>
+                            <GradientStop Color="#FF032327" Offset="0.997"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    
+                    <!--BOTONES PANEL PRINCIPAL-->
+                    
+                    <StackPanel Name="panelBtnIzq" Visibility="Collapsed"  Margin="5,50,0,0">
+                        <Button Name="btnNuevo" Margin="0,10" Style="{DynamicResource BtnDerecha}" ToolTip="Nuevo registro" HorizontalAlignment="Left" Click="btnNuevo_Click" >
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconBlock Style="{DynamicResource BtnDerIcon}" Icon="Clipboard"></fa:IconBlock>
+                                    <TextBlock Style="{DynamicResource BtnDerTexto}" Text="Nuevo"></TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button Name="btnEditar" Margin="0,10" Style="{DynamicResource BtnDerecha}" ToolTip="Edita el registro" HorizontalAlignment="Left" Click="btnEditar_Click" >
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconBlock Style="{DynamicResource BtnDerIcon}" Icon="Edit"></fa:IconBlock>
+                                    <TextBlock Style="{DynamicResource BtnDerTexto}" Text="Editar"></TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button Name="btnActivar" Margin="0,10" Style="{DynamicResource BtnDerecha}" ToolTip="Reactiva la OT" HorizontalAlignment="Left" Click="btnActivar_Click" >
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconBlock Style="{DynamicResource BtnDerIcon}" Icon="Clipboard"></fa:IconBlock>
+                                    <TextBlock Style="{DynamicResource BtnDerTexto}" Text="Activar"></TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button Name="btnBorrar" Margin="0,10" Style="{DynamicResource BtnDerecha}" ToolTip="Borra el registro" HorizontalAlignment="Left" Click="btnBorrar_Click"  >
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconBlock Style="{DynamicResource BtnDerIcon}" Icon="Eraser"></fa:IconBlock>
+                                    <TextBlock Style="{DynamicResource BtnDerTexto}" Text="Borrar"></TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+                
+                <!--#  PANEL OT INSERTAR ACTUALIZAR Y SUS OPERACIONES-->
+                
+                            <!-- PANEL OT NUEVA -->
+                
+                <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Name="PanelOt" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Style="{StaticResource LabelInfo}" VerticalAlignment="Top" Grid.Column="0" 
+                               HorizontalAlignment="Right" Width="384" Margin="2,1" Visibility="Collapsed" Name="tituloOT" >
+                        <Label.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <fa:IconBlock  Icon="Info" Margin="10,0"  Foreground="#FF1313B6"></fa:IconBlock>
+                                <TextBlock  Text="Información de la OT"></TextBlock>
+                            </StackPanel>
+                        </Label.Content>
+                    </Label>
+                    <Grid Grid.Row="0" Grid.Column="0" Visibility="Collapsed" DataContext="{Binding}" Name="panelOT">
+                        <ListBox Name="tablaOT" Margin="0,44,95,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="292" >
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock Text="Número de OT:" FontWeight="Medium" FontSize="14"></TextBlock>
+                                <TextBox PreviewTextInput="soloNumeros_PreviewTextInput" Name="otNumero" Text="{Binding Numero, Mode=TwoWay}" Margin="30,0,0,0"
+                                         HorizontalAlignment="Left" Width="150" AllowDrop="False" CommandManager.PreviewExecuted="textBox_PreviewExecuted" TabIndex="0"></TextBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock Text="Código del molde:" FontWeight="Medium" FontSize="14"></TextBlock>
+                                <ComboBox Name="comboMolde" MaxDropDownHeight="100" DataContext="{Binding}" Margin="10,0,0,0" HorizontalAlignment="Left"
+                                          Width="150" TabIndex="1" ></ComboBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock Text="Horas totales:" FontWeight="Medium" FontSize="14"></TextBlock>
+                                <TextBlock Name="otHorasTrabajo" Text="{Binding HorasTrabajo, Mode=TwoWay}" Margin="40,0,0,0" HorizontalAlignment="Left" Width="150"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock Text="Tipo de OT:" FontWeight="Medium" FontSize="14"></TextBlock>
+                                <ComboBox Name="otTipo" Text="{Binding Tipo, Mode=TwoWay}" Margin="53,0,0,0" HorizontalAlignment="Left" Width="150" TabIndex="2">
+                                    <ComboBoxItem >Checklist</ComboBoxItem>
+                                    <ComboBoxItem >Modificación</ComboBoxItem>
+                                    <ComboBoxItem >Reparación</ComboBoxItem>
+                                    <ComboBoxItem >Fabricación</ComboBoxItem>
+                                    <ComboBoxItem >Mantenimiento</ComboBoxItem>
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock Text="Cliente de OT:" FontWeight="Medium" FontSize="14"></TextBlock>
+                                <TextBox Name="otClienteOT" Text="{Binding ClienteOT, Mode=TwoWay}" Margin="38,0,0,0" HorizontalAlignment="Left" Width="150" TabIndex="3"></TextBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock Text="OT acabada:" FontWeight="Medium" FontSize="14"></TextBlock>
+                                <CheckBox Name="otAcabada" IsChecked="{Binding Acabada, Mode=TwoWay}" Content="Acabada" Margin="50,0,0,0" HorizontalAlignment="Left"
+                                          Width="150" TabIndex="4"></CheckBox>
+                            </StackPanel>
+                        </ListBox>
+                        
+                        <!-- BOTONES PANEL OT NUEVA-->
+                        
+                        <Button Name="BtnNuevaOT" Margin="298,50,2,0" Style="{DynamicResource BtnDerecha}" HorizontalAlignment="Right"
+                                Width="90" Click="BtnNuevaOT_Click" TabIndex="5">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconBlock Style="{DynamicResource BtnDerIcon}" Icon="Newspaper" FontSize="14"></fa:IconBlock>
+                                    <TextBlock Style="{DynamicResource BtnDerTexto}" Text="Nueva" FontSize="14"></TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button Name="BtnEditarOT" Margin="298,100,0,0" Style="{DynamicResource BtnDerecha}" HorizontalAlignment="Right"
+                                Width="90" Click="BtnEditarOT_Click" TabIndex="6" >
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconBlock Style="{DynamicResource BtnDerIcon}" Icon="Edit" FontSize="14"></fa:IconBlock>
+                                    <TextBlock Style="{DynamicResource BtnDerTexto}" Text="Editar" FontSize="14"></TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button Name="BtnGuardarOT" Margin="298,150,0,0" Style="{DynamicResource BtnDerecha}" HorizontalAlignment="Right" 
+                                Width="90" Click="BtnGuardarOT_Click" TabIndex="7">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconBlock Style="{DynamicResource BtnDerIcon}" Icon="Save" FontSize="14"></fa:IconBlock>
+                                    <TextBlock Style="{DynamicResource BtnDerTexto}" Text="Guardar" FontSize="14"></TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                    </Grid>
+                    
+                    <!-- PANEL OPERACIONES -->
+                    <Button Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Click="BtnCerrarOT_Click" Name="BtnCerrarOT" Visibility="Collapsed"
+                            Margin="0,4,20,0" Background="Transparent" BorderBrush="{x:Null}">
+                        <fa:IconImage Icon="WindowClose" Width="20" Height="20" Foreground="Black"/>
+                    </Button>
+
+                    <Grid Grid.Row="0" Grid.Column="1" Visibility="Collapsed" Name="panelEditaOperaciones">
+                        <Label Style="{StaticResource LabelInfo}" VerticalAlignment="Top" Grid.Column="1" 
+                               HorizontalAlignment="Center" Width="250" Margin="2,1,40,0" >
+                            <Label.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconBlock  Icon="Info"  Margin="10,0"  Foreground="#FF1313B6"></fa:IconBlock>
+                                    <TextBlock FontSize="16" Text="Agrega/edita operaciónes"></TextBlock>
+                                </StackPanel>
+                            </Label.Content>
+                        </Label>
+                        <Grid Grid.Row="0" Grid.Column="1">
+                            <ListBox Name="tablaOperaciones" Margin="0,44,35,0" VerticalAlignment="Top" DataContext="{Binding}" HorizontalAlignment="Center" Width="250" >
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Tipo:" FontWeight="Medium" FontSize="14"></TextBlock>
+                                    <ComboBox Name="operacionTipo" Text="{Binding TipoOperacion, Mode=TwoWay}" Margin="50,0,0,0" TabIndex="0" HorizontalAlignment="Left"
+                                              Width="150">
+                                        <ComboBoxItem >CNC</ComboBoxItem>
+                                        <ComboBoxItem >EDM</ComboBoxItem>
+                                        <ComboBoxItem >Ajuste</ComboBoxItem>
+                                        <ComboBoxItem >Pulido</ComboBoxItem>
+                                        <ComboBoxItem >Diseño</ComboBoxItem>
+                                        <ComboBoxItem >Checklist</ComboBoxItem>
+                                        <ComboBoxItem >Mantenimiento</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Horas:" FontWeight="Medium" FontSize="14"></TextBlock>
+                                    <TextBox PreviewTextInput="soloNumeros_PreviewTextInput" Name="operacionHoras" Text="{Binding Horas, Mode=TwoWay}" Margin="41,0,0,0"
+                                             HorizontalAlignment="Left" Width="150" AllowDrop="False" CommandManager.PreviewExecuted="textBox_PreviewExecuted" TabIndex="1"></TextBox>
+                                </StackPanel>
+                               <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Empleado:" FontWeight="Medium" FontSize="14"></TextBlock>
+                                    <ComboBox Name="operacionEmpleado" DataContext="{Binding}" Margin="15,0,0,0" HorizontalAlignment="Left" Width="150" TabIndex="2">   
+                                        
+                                    </ComboBox>
+                                </StackPanel>                                
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Estado:" FontWeight="Medium" FontSize="14"></TextBlock>
+                                    <ComboBox Name="operacionEstado" Text="{Binding EstadoOP, Mode=TwoWay}" Margin="36,0,0,0" HorizontalAlignment="Left" Width="150" TabIndex="3">
+                                        <ComboBoxItem >Sin empezar</ComboBoxItem>
+                                        <ComboBoxItem >Activo</ComboBoxItem>
+                                        <ComboBoxItem >Pausado</ComboBoxItem>
+                                        <ComboBoxItem >Finalizado</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+                                
+                                <!-- BOTONES DE OPERACIONES NUEVAS-->
+
+                            </ListBox>
+                            <Button Name="BtnNuevaOperacion" Margin="53,156,267,0" Style="{DynamicResource BtnDerecha}" HorizontalAlignment="Center"
+                                Width="70" Click="BtnNuevaOperacion_Click" TabIndex="4">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <fa:IconBlock Style="{DynamicResource BtnDerIcon}" Icon="Newspaper" FontSize="14"></fa:IconBlock>
+                                        <TextBlock Style="{DynamicResource BtnDerTexto}" Text="Nueva" FontSize="12"></TextBlock>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                            <Button Name="BtnGuardarOperacion" Margin="143,156,177,0" Style="{DynamicResource BtnDerecha}" HorizontalAlignment="Center"
+                                Width="70" Click="BtnGuardarOperacion_Click" TabIndex="5" >
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <fa:IconBlock Style="{DynamicResource BtnDerIcon}" Icon="Save" FontSize="14"></fa:IconBlock>
+                                        <TextBlock Style="{DynamicResource BtnDerTexto}" Text="Guardar" FontSize="12"></TextBlock>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                            <Button Name="BtnBorrarOperacion" Margin="233,155,87,0" Style="{DynamicResource BtnDerecha}" HorizontalAlignment="Center" 
+                                Width="70" Click="BtnBorrarOperacion_Click" TabIndex="6">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <fa:IconBlock Style="{DynamicResource BtnDerIcon}" Icon="Eraser" FontSize="14"></fa:IconBlock>
+                                        <TextBlock Style="{DynamicResource BtnDerTexto}" Text="Borrar" FontSize="12"/>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                            
+                        </Grid>
+                    </Grid>
+                    
+                    <!-- PANEL EMPLEADOS AGREGAR EDITAR-->
+
+                    <Label Style="{StaticResource LabelInfo}" VerticalAlignment="Top" Grid.Column="0" Grid.ColumnSpan="2"
+                               HorizontalAlignment="Center" Width="384" Margin="2,1" Visibility="Collapsed" Name="tituloEmpleados">
+                        <Label.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <fa:IconBlock  Icon="Info" Margin="10,0"  Foreground="#FF1313B6"></fa:IconBlock>
+                                <TextBlock  Text="Información del empleado"></TextBlock>
+                            </StackPanel>
+                        </Label.Content>
+                    </Label>
+                    <Grid DataContext="{Binding}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Visibility="Collapsed" Name="panelEmpleados">
+                        <ListBox Name="tablaEmpleado" Margin="0,44,95,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="292" >
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock Text="Nombre:" FontWeight="Medium" FontSize="14"></TextBlock>
+                                <TextBox Name="empleadoNombre" Text="{Binding Nombre, Mode=TwoWay}" Margin="20,0,0,0" HorizontalAlignment="Left" Width="200" TabIndex="0"></TextBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock Text="Apellido:" FontWeight="Medium" FontSize="14"></TextBlock>
+                                <TextBox Name="empleadoApellido" Text="{Binding Apellido, Mode=TwoWay}" Margin="20,0,0,0" HorizontalAlignment="Left" Width="200" TabIndex="1"></TextBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock Text="Cargo:" FontWeight="Medium" FontSize="14"></TextBlock>
+                                <ComboBox Name="empleadoCargo" Text="{Binding Cargo, Mode=TwoWay}" Margin="36,0,0,0" HorizontalAlignment="Left" Width="200" TabIndex="2">
+                                    <ComboBoxItem >Ajustador</ComboBoxItem>
+                                    <ComboBoxItem >Encargado</ComboBoxItem>
+                                    <ComboBoxItem >Diseñador</ComboBoxItem>
+                                    <ComboBoxItem >Fresador</ComboBoxItem>
+                                    <ComboBoxItem >Instalador</ComboBoxItem>
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock Text="Teléfono:" FontWeight="Medium" FontSize="14"></TextBlock>
+                                <TextBox Name="empleadoTelefono" Text="{Binding Telefono, Mode=TwoWay}" Margin="20,0,0,0" HorizontalAlignment="Left" Width="200" TabIndex="3"></TextBox>
+                            </StackPanel>
+                        </ListBox>
+
+                        <!-- BOTONES PANEL EPLEADO NUEVO-->
+
+                        <Button Name="BtnNuevoEmpleado" Margin="298,50,2,0" Style="{DynamicResource BtnDerecha}" HorizontalAlignment="Center"
+                                Width="90" Click="BtnNuevoEmpleado_Click" TabIndex="4">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconBlock Style="{DynamicResource BtnDerIcon}" Icon="Newspaper" FontSize="14"></fa:IconBlock>
+                                    <TextBlock Style="{DynamicResource BtnDerTexto}" Text="Nuevo" FontSize="14"></TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button Name="BtnEditarEmpleado" Margin="298,100,0,0" Style="{DynamicResource BtnDerecha}" HorizontalAlignment="Center"
+                                Width="90" Click="BtnEditarEmpleado_Click" TabIndex="5" >
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconBlock Style="{DynamicResource BtnDerIcon}" Icon="Edit" FontSize="14"></fa:IconBlock>
+                                    <TextBlock Style="{DynamicResource BtnDerTexto}" Text="Editar" FontSize="14"></TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button Name="BtnGuardarEmpleado" Margin="298,150,0,0" Style="{DynamicResource BtnDerecha}" HorizontalAlignment="Center" 
+                                Width="90" Click="BtnGuardarEmpleado_Click" TabIndex="6">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconBlock Style="{DynamicResource BtnDerIcon}" Icon="Save" FontSize="14"></fa:IconBlock>
+                                    <TextBlock Style="{DynamicResource BtnDerTexto}" Text="Guardar" FontSize="14"></TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Click="BtnCerrarEmpleados_Click"  
+                            Margin="0,4,20,0" Background="Transparent" BorderBrush="{x:Null}">
+                            <fa:IconImage Icon="WindowClose" Width="20" Height="20" Foreground="Black"/>
+                        </Button>
+                    </Grid>
+
+                    <!-- PANEL DE OPERACIONES -->
+                    
+                    <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Name="panelOperaciones" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        
+                        <!--OPERACION 1-->
+
+                        <Grid Grid.Row="0" Grid.Column="0" Name="panOperacion1" DataContext="{Binding}" Visibility="Collapsed">
+                            <Label Name="tituloOperacion1" Style="{StaticResource LabelInfo}" VerticalAlignment="Top"  
+                               HorizontalAlignment="Right" Width="250" Height="28" Margin="5,1" >
+                                <Label.Content>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                        <fa:IconBlock  Icon="Tools" Margin="10,0"  Foreground="#FF1313B6" FontSize="12"></fa:IconBlock>
+                                        <TextBlock Height="20" Text="Operación 1" FontSize="12"  Padding="0" RenderTransformOrigin="0.516,-0.05"></TextBlock>
+                                    </StackPanel>
+                                </Label.Content>
+                            </Label>
+                            <ListBox Margin="5,35,47,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="210" Name="tablaOper1" >
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Tipo:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding TipoOperacion, Mode=TwoWay}" Margin="38,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Name="textOperacion1" Text="Empleado:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding}" Name="margenOp1" Margin="9,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Horas:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding Horas, Mode=TwoWay}" Margin="31,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Estado:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding EstadoOp, Mode=TwoWay}" Margin="25,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                            </ListBox>
+                            <WrapPanel HorizontalAlignment="Right" Height="84" Margin="210,36,0,0" VerticalAlignment="Top" Width="44">
+                                <Button Name="activarOperacion1" Background="Green" Width="44" Height="21" ToolTip="Activar" Click="activarOperacion1_Click">
+                                    <fa:IconImage Icon="Play" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="pausarOperacion1" Background="Orange" Width="44" Height="21" ToolTip="Pausar" Click="pausarOperacion1_Click">
+                                    <fa:IconImage Icon="Pause" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="acabarOperacion1" Background="Red" Width="44" Height="21" ToolTip="Acabar" Click="acabarOperacion1_Click">
+                                    <fa:IconImage Icon="ban" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="editarOperacion1" Background="Gray" Width="44" Height="21" ToolTip="Editar" Click="editarOperacion1_Click">
+                                    <fa:IconImage Icon="Edit" Width="14"></fa:IconImage>
+                                </Button>
+                            </WrapPanel>
+                        </Grid>
+
+                        <!--OPERACION 2-->
+
+                        <Grid Grid.Row="0" Grid.Column="1" Name="panOperacion2" DataContext="{Binding}" Visibility="Collapsed">
+                            <Label Name="tituloOperacion2" Style="{StaticResource LabelInfo}" VerticalAlignment="Top"  
+                               HorizontalAlignment="Right" Width="250" Height="28" Margin="5,1" >
+                                <Label.Content>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                        <fa:IconBlock  Icon="Tools" Margin="10,0"  Foreground="#FF1313B6" FontSize="12"></fa:IconBlock>
+                                        <TextBlock Height="20" Text="Operación 2" FontSize="12"  Padding="0" RenderTransformOrigin="0.516,-0.05"></TextBlock>
+                                    </StackPanel>
+                                </Label.Content>
+                            </Label>
+                            <ListBox Margin="5,35,52,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="210" Name="tablaOper2" >
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Tipo:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding TipoOperacion, Mode=TwoWay}" Margin="38,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Name="textOperacion2" Text="Empleado:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding}" Name="margenOp2" Margin="9,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Horas:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding Horas, Mode=TwoWay}" Margin="31,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Estado:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding EstadoOp, Mode=TwoWay}" Margin="25,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                            </ListBox>
+                            <WrapPanel HorizontalAlignment="Center" Height="84" Margin="210,36,0,0" VerticalAlignment="Top" Width="44">
+                                <Button Name="activarOperacion2" Background="Green" Width="44" Height="21" ToolTip="Activar" Click="activarOperacion2_Click">
+                                    <fa:IconImage Icon="Play" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="pausarOperacion2" Background="Orange" Width="44" Height="21" ToolTip="Pausar" Click="pausarOperacion2_Click">
+                                    <fa:IconImage Icon="Pause" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="acabarOperacion2" Background="Red" Width="44" Height="21" ToolTip="Acabar" Click="acabarOperacion2_Click">
+                                    <fa:IconImage Icon="ban" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="editarOperacion2" Background="Gray" Width="44" Height="21" ToolTip="Editar" Click="editarOperacion2_Click">
+                                    <fa:IconImage Icon="Edit" Width="14"></fa:IconImage>
+                                </Button>
+                            </WrapPanel>
+                        </Grid>
+
+                        <!--OPERACION 3-->
+
+                        <Grid Grid.Row="0" Grid.Column="2" Name="panOperacion3" DataContext="{Binding}" Visibility="Collapsed">
+                            <Label Name="tituloOperacion3" Style="{StaticResource LabelInfo}" VerticalAlignment="Top"  
+                               HorizontalAlignment="Right" Width="250" Height="28" Margin="5,1" >
+                                <Label.Content>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                        <fa:IconBlock  Icon="Tools" Margin="10,0"  Foreground="#FF1313B6" FontSize="12"></fa:IconBlock>
+                                        <TextBlock Height="20" Text="Operación 3" FontSize="12"  Padding="0" RenderTransformOrigin="0.516,-0.05"></TextBlock>
+                                    </StackPanel>
+                                </Label.Content>
+                            </Label>
+                            <ListBox Margin="2,35,52,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="210" Name="tablaOper3" >
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Tipo:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding TipoOperacion, Mode=TwoWay}" Margin="38,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Name="textOperacion3" Text="Empleado:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding}" Name="margenOp3" Margin="9,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Horas:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding Horas, Mode=TwoWay}" Margin="31,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Estado:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding EstadoOp, Mode=TwoWay}" Margin="25,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                            </ListBox>
+                            <WrapPanel HorizontalAlignment="Left" Height="84" Margin="213,36,0,0" VerticalAlignment="Top" Width="44">
+                                <Button Name="activarOperacion3" Background="Green" Width="44" Height="21" ToolTip="Activar" Click="activarOperacion3_Click">
+                                    <fa:IconImage Icon="Play" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="pausarOperacion3" Background="Orange" Width="44" Height="21" ToolTip="Pausar" Click="pausarOperacion3_Click">
+                                    <fa:IconImage Icon="Pause" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="acabarOperacion3" Background="Red" Width="44" Height="21" ToolTip="Acabar" Click="acabarOperacion3_Click">
+                                    <fa:IconImage Icon="ban" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="editarOperacion3" Background="Gray" Width="44" Height="21" ToolTip="Editar" Click="editarOperacion3_Click">
+                                    <fa:IconImage Icon="Edit" Width="14"></fa:IconImage>
+                                </Button>
+                            </WrapPanel>
+                        </Grid>
+
+                        <!--OPERACION 4-->
+
+                        <Grid Grid.Row="1" Grid.Column="0" Name="panOperacion4" DataContext="{Binding}" Visibility="Collapsed">
+                            <Label Name="tituloOperacion4" Style="{StaticResource LabelInfo}" VerticalAlignment="Top"  
+                               HorizontalAlignment="Right" Width="250" Height="28" Margin="5,1" >
+                                <Label.Content>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                        <fa:IconBlock  Icon="Tools" Margin="10,0"  Foreground="#FF1313B6" FontSize="12"></fa:IconBlock>
+                                        <TextBlock Height="20" Text="Operación 4" FontSize="12"  Padding="0" RenderTransformOrigin="0.516,-0.05"></TextBlock>
+                                    </StackPanel>
+                                </Label.Content>
+                            </Label>
+                            <ListBox Margin="5,35,47,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="210" Name="tablaOper4" >
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Tipo:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding TipoOperacion, Mode=TwoWay}" Margin="38,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Name="textOperacion4" Text="Empleado:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding}" Name="margenOp4" Margin="9,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Horas:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding Horas, Mode=TwoWay}" Margin="31,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Estado:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding EstadoOp, Mode=TwoWay}" Margin="25,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                            </ListBox>
+                            <WrapPanel HorizontalAlignment="Right" Height="84" Margin="210,36,0,0" VerticalAlignment="Top" Width="44">
+                                <Button Name="activarOperacion4" Background="Green" Width="44" Height="21" ToolTip="Activar" Click="activarOperacion4_Click">
+                                    <fa:IconImage Icon="Play" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="pausarOperacion4" Background="Orange" Width="44" Height="21" ToolTip="Pausar" Click="pausarOperacion4_Click">
+                                    <fa:IconImage Icon="Pause" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="acabarOperacion4" Background="Red" Width="44" Height="21" ToolTip="Acabar" Click="acabarOperacion4_Click">
+                                    <fa:IconImage Icon="ban" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="editarOperacion4" Background="Gray" Width="44" Height="21" ToolTip="Editar" Click="editarOperacion4_Click">
+                                    <fa:IconImage Icon="Edit" Width="14"></fa:IconImage>
+                                </Button>
+                            </WrapPanel>
+                        </Grid>
+
+                        <!--OPERACION 5-->
+
+                        <Grid Grid.Row="1" Grid.Column="1" Name="panOperacion5" DataContext="{Binding}" Visibility="Collapsed">
+                            <Label Name="tituloOperacion5" Style="{StaticResource LabelInfo}" VerticalAlignment="Top"  
+                               HorizontalAlignment="Right" Width="250" Height="28" Margin="5,1" >
+                                <Label.Content>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                        <fa:IconBlock  Icon="Tools" Margin="10,0"  Foreground="#FF1313B6" FontSize="12"></fa:IconBlock>
+                                        <TextBlock Height="20" Text="Operación 5" FontSize="12"  Padding="0" RenderTransformOrigin="0.516,-0.05"></TextBlock>
+                                    </StackPanel>
+                                </Label.Content>
+                            </Label>
+                            <ListBox Margin="5,35,52,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="210" Name="tablaOper5" >
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Tipo:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding TipoOperacion, Mode=TwoWay}" Margin="38,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Name="textOperacion5" Text="Empleado:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding}" Name="margenOp5" Margin="9,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Horas:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding Horas, Mode=TwoWay}" Margin="31,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Estado:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding EstadoOp, Mode=TwoWay}" Margin="25,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                            </ListBox>
+                            <WrapPanel HorizontalAlignment="Center" Height="84" Margin="210,36,0,0" VerticalAlignment="Top" Width="44">
+                                <Button Name="activarOperacion5" Background="Green" Width="44" Height="21" ToolTip="Activar" Click="activarOperacion5_Click">
+                                    <fa:IconImage Icon="Play" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="pausarOperacion5" Background="Orange" Width="44" Height="21" ToolTip="Pausar" Click="pausarOperacion5_Click">
+                                    <fa:IconImage Icon="Pause" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="acabarOperacion5" Background="Red" Width="44" Height="21" ToolTip="Acabar" Click="acabarOperacion5_Click">
+                                    <fa:IconImage Icon="ban" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="editarOperacion5" Background="Gray" Width="44" Height="21" ToolTip="Editar" Click="editarOperacion5_Click">
+                                    <fa:IconImage Icon="Edit" Width="14"></fa:IconImage>
+                                </Button>
+                            </WrapPanel>
+                        </Grid>
+
+                        <!--OPERACION 6-->
+
+                        <Grid Grid.Row="1" Grid.Column="2" Name="panOperacion6" DataContext="{Binding}" Visibility="Collapsed">
+                            <Label Name="tituloOperacion6" Style="{StaticResource LabelInfo}" VerticalAlignment="Top"  
+                               HorizontalAlignment="Right" Width="250" Height="28" Margin="5,1" >
+                                <Label.Content>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                        <fa:IconBlock  Icon="Tools" Margin="10,0"  Foreground="#FF1313B6" FontSize="12"></fa:IconBlock>
+                                        <TextBlock Height="20" Text="Operación 6" FontSize="12"  Padding="0" RenderTransformOrigin="0.516,-0.05"></TextBlock>
+                                    </StackPanel>
+                                </Label.Content>
+                            </Label>
+                            <ListBox Margin="2,35,52,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="210" Name="tablaOper6" >
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Tipo:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding TipoOperacion, Mode=TwoWay}" Margin="38,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Name="textOperacion6" Text="Empleado:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding}" Name="margenOp6" Margin="9,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Horas:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding Horas, Mode=TwoWay}" Margin="31,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Estado:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding EstadoOp, Mode=TwoWay}" Margin="25,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                            </ListBox>
+                            <WrapPanel HorizontalAlignment="Left" Height="84" Margin="213,36,0,0" VerticalAlignment="Top" Width="44">
+                                <Button Name="activarOperacion6" Background="Green" Width="44" Height="21" ToolTip="Activar" Click="activarOperacion6_Click">
+                                    <fa:IconImage Icon="Play" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="pausarOperacion6" Background="Orange" Width="44" Height="21" ToolTip="Pausar" Click="pausarOperacion6_Click">
+                                    <fa:IconImage Icon="Pause" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="acabarOperacion6" Background="Red" Width="44" Height="21" ToolTip="Acabar" Click="acabarOperacion6_Click">
+                                    <fa:IconImage Icon="ban" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="editarOperacion6" Background="Gray" Width="44" Height="21" ToolTip="Editar" Click="editarOperacion6_Click">
+                                    <fa:IconImage Icon="Edit" Width="14"></fa:IconImage>
+                                </Button>
+                            </WrapPanel>
+                        </Grid>
+
+                        <!--OPERACION 7-->
+
+                        <Grid Grid.Row="2" Grid.Column="0" Name="panOperacion7" DataContext="{Binding}" Visibility="Collapsed">
+                            <Label Name="tituloOperacion7" Style="{StaticResource LabelInfo}" VerticalAlignment="Top"  
+                               HorizontalAlignment="Right" Width="250" Height="28" Margin="5,1" >
+                                <Label.Content>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                        <fa:IconBlock  Icon="Tools" Margin="10,0"  Foreground="#FF1313B6" FontSize="12"></fa:IconBlock>
+                                        <TextBlock Height="20" Text="Operación 7" FontSize="12"  Padding="0" RenderTransformOrigin="0.516,-0.05"></TextBlock>
+                                    </StackPanel>
+                                </Label.Content>
+                            </Label>
+                            <ListBox Margin="5,35,47,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="210" Name="tablaOper7" >
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Tipo:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding TipoOperacion, Mode=TwoWay}" Margin="38,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Name="textOperacion7" Text="Empleado:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding}" Name="margenOp7" Margin="9,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Horas:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding Horas, Mode=TwoWay}" Margin="31,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Estado:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding EstadoOp, Mode=TwoWay}" Margin="25,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                            </ListBox>
+                            <WrapPanel HorizontalAlignment="Right" Height="84" Margin="210,36,0,0" VerticalAlignment="Top" Width="44">
+                                <Button Name="activarOperacion7" Background="Green" Width="44" Height="21" ToolTip="Activar" Click="activarOperacion7_Click">
+                                    <fa:IconImage Icon="Play" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="pausarOperacion7" Background="Orange" Width="44" Height="21" ToolTip="Pausar" Click="pausarOperacion7_Click">
+                                    <fa:IconImage Icon="Pause" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="acabarOperacion7" Background="Red" Width="44" Height="21" ToolTip="Acabar" Click="acabarOperacion7_Click">
+                                    <fa:IconImage Icon="ban" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="editarOperacion7" Background="Gray" Width="44" Height="21" ToolTip="Editar" Click="editarOperacion7_Click">
+                                    <fa:IconImage Icon="Edit" Width="14"></fa:IconImage>
+                                </Button>
+                            </WrapPanel>
+                        </Grid>
+
+                        <!--OPERACION 8-->
+
+                        <Grid Grid.Row="2" Grid.Column="1" Name="panOperacion8" DataContext="{Binding}" Visibility="Collapsed">
+                            <Label Name="tituloOperacion8" Style="{StaticResource LabelInfo}" VerticalAlignment="Top"  
+                               HorizontalAlignment="Right" Width="250" Height="28" Margin="5,1" >
+                                <Label.Content>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                        <fa:IconBlock  Icon="Tools" Margin="10,0"  Foreground="#FF1313B6" FontSize="12"></fa:IconBlock>
+                                        <TextBlock Height="20" Text="Operación 8" FontSize="12"  Padding="0" RenderTransformOrigin="0.516,-0.05"></TextBlock>
+                                    </StackPanel>
+                                </Label.Content>
+                            </Label>
+                            <ListBox Margin="5,35,52,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="210" Name="tablaOper8" >
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Tipo:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding TipoOperacion, Mode=TwoWay}" Margin="38,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Name="textOperacion8" Text="Empleado:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding}" Name="margenOp8" Margin="9,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Horas:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding Horas, Mode=TwoWay}" Margin="31,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Estado:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding EstadoOp, Mode=TwoWay}" Margin="25,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                            </ListBox>
+                            <WrapPanel HorizontalAlignment="Center" Height="84" Margin="210,36,0,0" VerticalAlignment="Top" Width="44">
+                                <Button Name="activarOperacion8" Background="Green" Width="44" Height="21" ToolTip="Activar" Click="activarOperacion8_Click">
+                                    <fa:IconImage Icon="Play" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="pausarOperacion8" Background="Orange" Width="44" Height="21" ToolTip="Pausar" Click="pausarOperacion8_Click">
+                                    <fa:IconImage Icon="Pause" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="acabarOperacion8" Background="Red" Width="44" Height="21" ToolTip="Acabar" Click="acabarOperacion8_Click">
+                                    <fa:IconImage Icon="ban" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="editarOperacion8" Background="Gray" Width="44" Height="21" ToolTip="Editar" Click="editarOperacion8_Click">
+                                    <fa:IconImage Icon="Edit" Width="14"></fa:IconImage>
+                                </Button>
+                            </WrapPanel>
+                        </Grid>
+
+                        <!--OPERACION 9-->
+
+                        <Grid Grid.Row="2" Grid.Column="2" Name="panOperacion9" DataContext="{Binding}" Visibility="Collapsed">
+                            <Label Name="tituloOperacion9" Style="{StaticResource LabelInfo}" VerticalAlignment="Top"  
+                               HorizontalAlignment="Right" Width="250" Height="28" Margin="5,1" >
+                                <Label.Content>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                        <fa:IconBlock  Icon="Tools" Margin="10,0"  Foreground="#FF1313B6" FontSize="12"></fa:IconBlock>
+                                        <TextBlock Height="20" Text="Operación 9" FontSize="12"  Padding="0" RenderTransformOrigin="0.516,-0.05"></TextBlock>
+                                    </StackPanel>
+                                </Label.Content>
+                            </Label>
+                            <ListBox Margin="2,35,52,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="210" Name="tablaOper9" >
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Tipo:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding TipoOperacion, Mode=TwoWay}" Margin="38,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Name="textOperacion9" Text="Empleado:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding}" Name="margenOp9" Margin="9,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Horas:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding Horas, Mode=TwoWay}" Margin="31,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Estado:" FontWeight="Medium" FontSize="12"></TextBlock>
+                                    <TextBlock Text="{Binding EstadoOp, Mode=TwoWay}" Margin="25,0,0,0" HorizontalAlignment="Left" Width="120"></TextBlock>
+                                </StackPanel>
+                            </ListBox>
+                            <WrapPanel HorizontalAlignment="Left" Height="84" Margin="213,36,0,0" VerticalAlignment="Top" Width="44">
+                                <Button Name="activarOperacion9" Background="Green" Width="44" Height="21" ToolTip="Activar" Click="activarOperacion9_Click">
+                                    <fa:IconImage Icon="Play" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="pausarOperacion9" Background="Orange" Width="44" Height="21" ToolTip="Pausar" Click="pausarOperacion9_Click">
+                                    <fa:IconImage Icon="Pause" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="acabarOperacion9" Background="Red" Width="44" Height="21" ToolTip="Acabar" Click="acabarOperacion9_Click">
+                                    <fa:IconImage Icon="ban" Width="14"></fa:IconImage>
+                                </Button>
+                                <Button Name="editarOperacion9" Background="Gray" Width="44" Height="21" ToolTip="Editar" Click="editarOperacion9_Click">
+                                    <fa:IconImage Icon="Edit" Width="14"></fa:IconImage>
+                                </Button>
+                            </WrapPanel>
+                        </Grid>
+                    </Grid>
+                    
+                    <!--PANEL MOLDES AGREGAR MODIFICAR-->
+                    
+                    <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Name="panelMoldes" Grid.RowSpan="3" Visibility="Collapsed">
+                        <Label Style="{StaticResource LabelInfo}" VerticalAlignment="Top" Grid.Column="0" 
+                               HorizontalAlignment="Center" Width="384" Margin="201,100,195,0" Visibility="Visible" Name="tituloMoldes" >
+                            <Label.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconBlock  Icon="Info" Margin="10,0"  Foreground="#FF1313B6"></fa:IconBlock>
+                                    <TextBlock  Text="Información del Molde"></TextBlock>
+                                </StackPanel>
+                            </Label.Content>
+                        </Label>
+                        <ListBox Margin="0,153,95,0" DataContext="{Binding}" VerticalAlignment="Top" Name="tablaMolde" HorizontalAlignment="Center" Width="292" >
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock Text="Código:" FontWeight="Medium" FontSize="14"></TextBlock>
+                                <TextBox Name="moldeCodigo" Text="{Binding Codigo, Mode=TwoWay}" Margin="53,0,0,0" HorizontalAlignment="Left" Width="170"></TextBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock Text="Cliente:" FontWeight="Medium" FontSize="14"></TextBlock>
+                                <TextBox Name="moldeCliente" Text="{Binding ClienteMolde, Mode=TwoWay}" Margin="55,0,0,0" HorizontalAlignment="Left" Width="170"></TextBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock Text="Fecha Entrada:" FontWeight="Medium" FontSize="14"></TextBlock>
+                                <DatePicker Name="moldeFeEntrada" Text="{Binding FechaEntrada, Mode=TwoWay}" SelectedDate="01/01/2020" Margin="10,0,0,0" HorizontalAlignment="Left" Width="170"></DatePicker>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock Text="Fecha Salida:" FontWeight="Medium" FontSize="14"></TextBlock>
+                                <DatePicker Name="moldeFeSalida" Text="{Binding FechaSalida, Mode=TwoWay}" SelectedDate="01/01/2020" Margin="20,0,0,0" HorizontalAlignment="Left" Width="170"></DatePicker>
+                            </StackPanel>                            
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock Text="En taller:" FontWeight="Medium" FontSize="14"></TextBlock>
+                                <CheckBox Name="moldeEnTaller" IsChecked="{Binding EnTaller, Mode=TwoWay}" Content="En taller" Margin="50,0,0,0" HorizontalAlignment="Left" Width="170"></CheckBox>
+                            </StackPanel>
+                        </ListBox>
+
+                        <!-- BOTONES PANEL MOLDES NUEVO-->
+
+                        <Button Name="BtnNuevoMolde" Margin="298,150,2,0" Style="{DynamicResource BtnDerecha}" HorizontalAlignment="Center"
+                                Width="90" Click="BtnNuevoMolde_Click">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconBlock Style="{DynamicResource BtnDerIcon}" Icon="Newspaper" FontSize="14"></fa:IconBlock>
+                                    <TextBlock Style="{DynamicResource BtnDerTexto}" Text="Nuevo" FontSize="14"></TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>                       
+                        <Button Name="BtnGuardarMolde" Margin="298,250,0,0" Style="{DynamicResource BtnDerecha}" HorizontalAlignment="Center" 
+                                Width="90" Click="BtnGuardarMolde_Click">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconBlock Style="{DynamicResource BtnDerIcon}" Icon="Save" FontSize="14"></fa:IconBlock>
+                                    <TextBlock Style="{DynamicResource BtnDerTexto}" Text="Guardar" FontSize="14"></TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button VerticalAlignment="Top" HorizontalAlignment="Right" Click="BtnCerrarMolde_Click"  Margin="0,4,20,0" Background="Transparent" BorderBrush="{x:Null}">
+                            <fa:IconImage Icon="WindowClose" Width="20" Height="20" Foreground="Black"/>
+                        </Button>
+                    </Grid>
+                </Grid>
+                <StatusBar Grid.Row="2" Grid.ColumnSpan="2" Background="Aqua" >
+                    <StatusBar.Template>
+                        <ControlTemplate>
+                            <Rectangle RadiusX="5" RadiusY="5" StrokeThickness="3" Fill="Azure" >
+                                
+                            </Rectangle>
+                        </ControlTemplate>
+                    </StatusBar.Template>
+                    <TextBlock Text="Hola"></TextBlock>
+                </StatusBar>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
